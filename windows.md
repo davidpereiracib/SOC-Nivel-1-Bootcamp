@@ -87,5 +87,31 @@ flowchart TD
     K --> M[Generar reporte técnico y recomendaciones]
     L --> H
 
+# 🖥️ Uso de Sysmon (System Monitor)
+
+**Sysmon** (*System Monitor*) es una herramienta gratuita de Microsoft (parte de **Sysinternals**) que registra en el *Event Log* de Windows actividades de bajo nivel como creación de procesos, conexiones de red, cambios en el registro y carga de controladores.  
+Se usa principalmente en **DFIR** (*Digital Forensics and Incident Response*), **threat hunting** y **detección de intrusiones**.
+
+---
+
+## 1️⃣ ¿Para qué sirve Sysmon?
+Sysmon **no** reemplaza un antivirus, es un *sensor* que extiende el registro de eventos de Windows.  
+Permite:
+- Monitorear **creación/terminación de procesos** con detalles como hash y línea de comandos.
+- Registrar **conexiones de red** con IP origen/destino y puertos.
+- Detectar **modificaciones de ficheros** sospechosos.
+- Rastrear **inyección de código** y carga de controladores.
+- Facilitar la correlación de eventos en **SIEMs** como Splunk, ELK o Microsoft Sentinel.
+
+---
+
+## 2️⃣ Instalación
+1. Descargar Sysmon desde la página oficial:  
+   🔗 [Sysmon - Sysinternals](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
+2. Extraer el ZIP en una carpeta (por ejemplo: `C:\Tools\Sysmon`).
+3. Ejecutar en una consola **PowerShell como administrador**:
+   ```powershell
+   sysmon64.exe -accepteula -i
+
 
 
