@@ -114,5 +114,37 @@ Permite:
    ```powershell
    sysmon64.exe -accepteula -i
 
+## 3️⃣ Configuración recomendada
+
+Por defecto, Sysmon genera mucho ruido.  
+Se recomienda usar un archivo **XML** que defina qué eventos y filtros aplicar.
+
+**Configuración popular y mantenida:**  
+🔗 [Sysmon Config - SwiftOnSecurity](https://github.com/SwiftOnSecurity/sysmon-config)
+
+**Instalar con configuración personalizada:**
+```powershell
+sysmon64.exe -accepteula -i sysmonconfig.xml
+
+## 4️⃣ Ubicación de los logs
+
+Sysmon guarda los eventos en el Visor de eventos de Windows:
+
+Applications and Services Logs > Microsoft > Windows > Sysmon > Operational
 
 
+También puedes verlos desde PowerShell:
+
+Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational"
+
+## 5️⃣ Eventos clave para hunting
+
+| Event ID | Descripción               | Uso común en hunting                    |
+|----------|---------------------------|------------------------------------------|
+| 1        | Creación de proceso       | Detectar LOLBins, PowerShell sospechoso  |
+| 3        | Conexión de red           | Salidas a IP maliciosa, C2               |
+| 7        | Carga de imagen/DLL       | Inyecciones, librerías raras             |
+| 8        | Creación de hilo remoto   | Técnicas de inyección                    |
+| 11       | Creación de archivo       | Drop de malware                          |
+| 13       | Modificación del Registro | Persistencia                             |
+| 22       | DNS Query                 | Detección de DGA, exfiltración           |
