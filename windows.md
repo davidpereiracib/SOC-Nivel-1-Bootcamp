@@ -86,6 +86,7 @@ flowchart TD
     J -->|No| L[Buscar evidencia adicional en otras fuentes]
     K --> M[Generar reporte técnico y recomendaciones]
     L --> H
+```
 
 # 🖥️ Uso de Sysmon (System Monitor)
 
