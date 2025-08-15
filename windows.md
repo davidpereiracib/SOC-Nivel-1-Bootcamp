@@ -125,6 +125,7 @@ Se recomienda usar un archivo **XML** que defina qué eventos y filtros aplicar.
 **Instalar con configuración personalizada:**
 ```powershell
 sysmon64.exe -accepteula -i sysmonconfig.xml
+```
 
 ## 4️⃣ Ubicación de los logs
 
@@ -148,3 +149,27 @@ Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational"
 | 11       | Creación de archivo       | Drop de malware                          |
 | 13       | Modificación del Registro | Persistencia                             |
 | 22       | DNS Query                 | Detección de DGA, exfiltración           |
+
+## 6️⃣ Buenas prácticas
+
+Usar whitelist y filtros para reducir el ruido.
+
+Enviar logs a un SIEM para correlación y retención prolongada.
+
+Actualizar la configuración periódicamente con nuevas TTPs.
+
+Mapear eventos a MITRE ATT&CK para análisis estructurado.
+
+Evitar el modo verbose en equipos con poco almacenamiento.
+
+## 7️⃣ Actualización o desinstalación
+
+Actualizar configuración sin reinstalar:
+```powershell
+sysmon64.exe -c sysmonconfig.xml
+```
+
+Desinstalar Sysmon:
+```powershell
+sysmon64.exe -u
+```
