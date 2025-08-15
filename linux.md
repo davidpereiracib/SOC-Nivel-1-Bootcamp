@@ -33,3 +33,24 @@
 |                             | `avml`              | Herramienta Microsoft para volcado de memoria. | [AVML](https://github.com/microsoft/avml) |
 | **OSINT y análisis avanzado**| `maldetect`        | Escáner de malware para Linux. | [Linux Malware Detect](https://www.rfxn.com/projects/linux-malware-detect/) |
 |                             | `yara`              | Reglas para detección de patrones maliciosos. | [YARA](https://virustotal.github.io/yara/) |
+
+## 👤 Análisis de Usuarios
+
+| Herramienta/Comando | Descripción | Enlace |
+|---------------------|-------------|--------|
+| `id`                | Muestra UID y GID del usuario actual. | — |
+| `who` / `w`         | Lista usuarios conectados. | — |
+| `cat /etc/passwd`   | Lista cuentas de usuario. | — |
+| `cat /etc/shadow`   | Lista hashes de contraseñas (requiere root). | — |
+
+---
+
+## 🔐 Auditoría de Privilegios y Permisos
+
+| Herramienta/Comando | Descripción | Enlace |
+|---------------------|-------------|--------|
+| `awk -F: '($3 == 0) {print $1}' /etc/passwd` | Lista cuentas con UID 0 (además de root). | — |
+| `getent group sudo wheel admin` | Lista usuarios en grupos privilegiados. | — |
+| `awk -F: '($2 == "" && $7 != "/usr/sbin/nologin") {print $1}' /etc/shadow` | Cuentas con shell válido pero sin contraseña. | — |
+| `find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \; 2>/dev/null` | Busca archivos con bit SUID/SGID establecidos. | — |
+| `find /etc -type f -perm -o+w -exec ls -l {} \;` | Detecta permisos débiles en archivos sensibles. | — |
