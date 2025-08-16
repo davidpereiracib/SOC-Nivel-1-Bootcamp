@@ -71,7 +71,7 @@ Fuentes de Datos: Windows - Registros de Ejecución:
 ```mermaid
 
 flowchart TD
-    A[Punto de partida: caso u host identificado] --> B[Adquisición: imagen, volcado o análisis en vivo]
+    A[Punto de partida: caso o host identificado] --> B[Adquisición: imagen, volcado o análisis en vivo]
     B --> C{¿Qué artefactos están disponibles?}
     C -->|Amcache.hve| D[Parsear Amcache con AmcacheParser]
     C -->|ShimCache| E[Parsear AppCompatCache con AppCompatCacheParser]
